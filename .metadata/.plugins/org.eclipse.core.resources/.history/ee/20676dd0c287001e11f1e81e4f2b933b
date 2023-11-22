@@ -1,0 +1,9 @@
+package Ejercicio1;
+
+import java.util.List;
+
+@FunctionalInterface
+public interface MayusculaNumero {
+	
+	public List<String> changeN (List<String> lisOrigin);
+}

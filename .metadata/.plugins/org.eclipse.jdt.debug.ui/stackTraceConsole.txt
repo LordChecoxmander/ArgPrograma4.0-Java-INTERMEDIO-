@@ -1,0 +1,4 @@
+int dni;
+String nombre;
+int edad;
+int cantidadMesesTrabajados;
