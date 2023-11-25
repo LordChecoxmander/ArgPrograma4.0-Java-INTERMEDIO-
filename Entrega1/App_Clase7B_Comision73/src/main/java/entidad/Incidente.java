@@ -1,15 +1,33 @@
 package entidad;
 
 import java.util.Date;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
+@Entity
+@Table(name="Incidente")
 public class Incidente {
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idIncidente;
+	@Column(name="descripcion")
 	private String descripcion;
+	@Column(name="tiempoEstimado")
 	private int tiempoEstimado;
+	@Column(name="fechaResolucion")
 	private Date fechaResolucion;
+	@Column(name="estado")
 	private boolean estado;
 
+	@OneToMany(cascade= {CascadeType.ALL})
+	@JoinColumn(name="idTecnico")
+	private List<Tecnico> resuelve = new ArrayList<Tecnico>(); 
+	
 	public Incidente() {
 
 	}

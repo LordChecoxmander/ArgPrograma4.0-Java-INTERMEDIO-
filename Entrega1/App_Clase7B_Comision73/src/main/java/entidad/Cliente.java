@@ -7,8 +7,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-
-
 @Entity
 @Table(name="cliente")
 public class Cliente {
@@ -21,6 +19,11 @@ public class Cliente {
 	private int cuit;
 	@Column(name="razonSocial")
 	private String razonSocial;
+
+	@OneToMany(cascade= {CascadeType.ALL})
+	@JoinColumn(name="idIncidente")
+	private List<Incidente> TIENE = new ArrayList<Incidente>(); 
+	
 
 	public Cliente() {
 
