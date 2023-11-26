@@ -23,12 +23,8 @@ public class Especialidad {
 	@Column(name="descripcion")
 	private String descripción;
 
-    @OneToOne(cascade= {CascadeType.ALL})
-	@JoinColumn(name="tecnico_c")
-	private Tecnico tecnico;	
-	@OneToOne(cascade= {CascadeType.ALL})
-	@JoinColumn(name="incidente_c")
-	private Incidente incidente;
+	
+
 
 	public Especialidad() {
 

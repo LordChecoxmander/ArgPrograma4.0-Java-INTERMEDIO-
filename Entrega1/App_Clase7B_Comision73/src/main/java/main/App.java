@@ -53,8 +53,41 @@ public class App {
 		Tecnico tec4 = new Tecnico(0, "NombreCUATRO", "ApellidoCUATRO");
 		Tecnico tec5 = new Tecnico(0, "NombreCINCO", "ApellidoCINCO");
 		
-			
-
+		/*
+		 * agrego a cada tecnico a una especialidad
+		 */
+		tec1.setEspecialidad(esp1);
+		tec2.setEspecialidad(esp2);
+		tec3.setEspecialidad(esp3);
+		tec4.setEspecialidad(esp4);
+		tec5.setEspecialidad(esp5);
+		
+		/*
+		 * agrego a cada incidente una especialidad
+		 */
+		in1.setEspecialidad(esp1);
+		in2.setEspecialidad(esp2);
+		in3.setEspecialidad(esp3);
+		in4.setEspecialidad(esp4);
+		in5.setEspecialidad(esp5);
+		
+		/*
+		 * agrego a cada incidente un tecnico
+		 */
+		in1.agregarResuelve(tec1);
+		in2.agregarResuelve(tec2);
+		in3.agregarResuelve(tec3);
+		in4.agregarResuelve(tec4);
+		in5.agregarResuelve(tec5);
+		
+		/*
+		 * agrego a cada cliente un incidente
+		 */
+		cli1.agregarIncidente(in1);
+		cli2.agregarIncidente(in2);
+		cli3.agregarIncidente(in3);
+		cli4.agregarIncidente(in4);
+		cli5.agregarIncidente(in5);
 	}
 
 }

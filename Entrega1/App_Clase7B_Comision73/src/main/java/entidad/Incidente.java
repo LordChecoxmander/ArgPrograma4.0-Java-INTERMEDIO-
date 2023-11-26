@@ -13,6 +13,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -35,6 +36,12 @@ public class Incidente {
 	@JoinColumn(name="idTecnico")
 	private List<Tecnico> resuelve = new ArrayList<Tecnico>(); 
 	
+	@OneToOne(cascade= {CascadeType.ALL})
+	@JoinColumn(name="incidente_c")
+	private Especialidad especialidad;
+
+
+	
 	public Incidente() {
 
 	}
@@ -48,6 +55,30 @@ public class Incidente {
 		this.estado = estado;
 	}
 
+	public void agregarResuelve(Tecnico tec) {
+		this.resuelve.add(tec);
+	}
+	
+	public List<Tecnico> getResuelve() {
+		return resuelve;
+	}
+
+	public void setResuelve(List<Tecnico> resuelve) {
+		this.resuelve = resuelve;
+	}
+
+	public Especialidad getEspecialidad() {
+		return especialidad;
+	}
+
+	public void setEspecialidad(Especialidad especialidad) {
+		this.especialidad = especialidad;
+	}
+
+	public void agregarTecnico(Tecnico tec) {
+		this.resuelve.add(tec);
+	}
+	
 	public int getIdIncidente() {
 		return idIncidente;
 	}

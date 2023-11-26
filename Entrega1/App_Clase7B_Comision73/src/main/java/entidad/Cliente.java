@@ -28,7 +28,7 @@ public class Cliente {
 
 	@OneToMany(cascade= {CascadeType.ALL})
 	@JoinColumn(name="idIncidente")
-	private List<Incidente> TIENE = new ArrayList<Incidente>(); 
+	private List<Incidente> tiene = new ArrayList<Incidente>(); 
 	
 
 	public Cliente() {
@@ -42,6 +42,11 @@ public class Cliente {
 		this.razonSocial = razonSocial;
 	}
 
+	public void agregarIncidente(Incidente in) {
+		this.tiene.add(in);
+	}
+		
+	
 	public int getIdCliente() {
 		return idCliente;
 	}

@@ -1,10 +1,13 @@
 package entidad;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -19,6 +22,10 @@ public class Tecnico {
 	@Column(name="apellido")
 	private String apellido;
 
+	@OneToOne(cascade= {CascadeType.ALL})
+	@JoinColumn(name="tecnico_c")
+	private Especialidad especialidad;
+	
 	public Tecnico() {
 
 	}
@@ -28,6 +35,16 @@ public class Tecnico {
 		this.idTecnico = idTecnico;
 		this.nombre = nombre;
 		this.apellido = apellido;
+	}
+
+	
+	
+	public Especialidad getEspecialidad() {
+		return especialidad;
+	}
+
+	public void setEspecialidad(Especialidad especialidad) {
+		this.especialidad = especialidad;
 	}
 
 	public int getIdTecnico() {
