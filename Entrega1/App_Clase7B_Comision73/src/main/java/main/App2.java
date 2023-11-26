@@ -1,4 +1,4 @@
-package frgp.utn.edu.ar.main;
+package main;
 
 import java.util.List;
 

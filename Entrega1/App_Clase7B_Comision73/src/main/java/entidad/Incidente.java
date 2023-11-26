@@ -1,11 +1,18 @@
 package entidad;
 
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -20,7 +27,7 @@ public class Incidente {
 	@Column(name="tiempoEstimado")
 	private int tiempoEstimado;
 	@Column(name="fechaResolucion")
-	private Date fechaResolucion;
+	private LocalDate fechaResolucion;
 	@Column(name="estado")
 	private boolean estado;
 
@@ -32,7 +39,7 @@ public class Incidente {
 
 	}
 
-	public Incidente(int idIncidente, String descripcion, int tiempoEstimado, Date fechaResolucion, boolean estado) {
+	public Incidente(int idIncidente, String descripcion, int tiempoEstimado, LocalDate fechaResolucion, boolean estado) {
 		super();
 		this.idIncidente = idIncidente;
 		this.descripcion = descripcion;
@@ -65,11 +72,11 @@ public class Incidente {
 		this.tiempoEstimado = tiempoEstimado;
 	}
 
-	public Date getFechaResolucion() {
+	public LocalDate getFechaResolucion() {
 		return fechaResolucion;
 	}
 
-	public void setFechaResolucion(Date fechaResolucion) {
+	public void setFechaResolucion(LocalDate fechaResolucion) {
 		this.fechaResolucion = fechaResolucion;
 	}
 

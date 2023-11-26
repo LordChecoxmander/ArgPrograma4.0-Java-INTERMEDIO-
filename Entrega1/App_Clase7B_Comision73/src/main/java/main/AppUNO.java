@@ -1,4 +1,4 @@
-package frgp.utn.edu.ar.main;
+package main;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -17,7 +17,7 @@ import entidad.Usuario;
 import frgp.utn.edu.ar.dao.DaoCurso;
 import frgp.utn.edu.ar.dao.DaoDocente;
 
-public class App 
+public class AppUNO 
 {
     public static void main( String[] args )
     {
