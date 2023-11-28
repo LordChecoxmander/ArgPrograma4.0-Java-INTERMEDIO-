@@ -8,7 +8,9 @@ import javax.persistence.*;
 @Entity
 @Table(name="cliente")
 public class Cliente implements Serializable {
+
     @Id
+    @Column(name="idCliente")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idCliente;
 
@@ -17,34 +19,20 @@ public class Cliente implements Serializable {
     @Column(name="razonSocial")
     private String razonSocial;
 
-    @OneToMany(cascade= {CascadeType.ALL})
-    @JoinColumn(name="idIncidente")
-    private List<Incidente> tiene = new ArrayList<Incidente>();
+
 
 
     public Cliente() {
 
     }
 
-    public Cliente(int idCliente, int cuit, String razonSocial) {
+    public Cliente( int cuit, String razonSocial) {
         super();
-        this.idCliente = idCliente;
+//        this.idCliente = idCliente;
         this.cuit  = cuit;
         this.razonSocial = razonSocial;
     }
 
-    public void agregarIncidente(Incidente in) {
-        this.tiene.add(in);
-    }
-
-
-    public int getIdCliente() {
-        return idCliente;
-    }
-
-    public void setIdCliente(int idCliente) {
-        this.idCliente = idCliente;
-    }
 
     public int getCuit() {
         return cuit;
@@ -61,5 +49,4 @@ public class Cliente implements Serializable {
     public void setRazonSocial(String razonSocial) {
         this.razonSocial = razonSocial;
     }
-
 }

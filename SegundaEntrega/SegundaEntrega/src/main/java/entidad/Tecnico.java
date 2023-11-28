@@ -9,6 +9,7 @@ import javax.persistence.*;
 public class Tecnico implements Serializable {
 
     @Id
+    @Column(name="idTecnico")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idTecnico;
     @Column(name="nombre")
@@ -17,28 +18,27 @@ public class Tecnico implements Serializable {
     private String apellido;
 
     @OneToOne(cascade= {CascadeType.ALL})
-    @JoinColumn(name="tecnico_c")
-    private Especialidad especialidad;
+    @JoinColumn(name="idEspecialidad")
+    private Especialidad idEspecialidad;
 
     public Tecnico() {
 
     }
 
-    public Tecnico(int idTecnico, String nombre, String apellido) {
+    public Tecnico( String nombre, String apellido) {
         super();
-        this.idTecnico = idTecnico;
+//        this.idTecnico = idTecnico;
         this.nombre = nombre;
         this.apellido = apellido;
     }
 
 
-
-    public Especialidad getEspecialidad() {
-        return especialidad;
+    public Especialidad getIdEspecialidad() {
+        return idEspecialidad;
     }
 
-    public void setEspecialidad(Especialidad especialidad) {
-        this.especialidad = especialidad;
+    public void setIdEspecialidad(Especialidad idEspecialidad) {
+        this.idEspecialidad = idEspecialidad;
     }
 
     public int getIdTecnico() {

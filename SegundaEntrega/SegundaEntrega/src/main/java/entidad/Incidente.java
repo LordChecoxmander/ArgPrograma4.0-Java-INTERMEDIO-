@@ -3,14 +3,19 @@ package entidad;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import javax.persistence.*;
+import entidad.Cliente;
+
 
 @Entity
 @Table(name="Incidente")
 public class Incidente implements Serializable {
 
     @Id
+    @Column(name="idIncidente")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idIncidente;
     @Column(name="descripcion")
@@ -23,13 +28,17 @@ public class Incidente implements Serializable {
     private boolean estado;
 
     @OneToMany(cascade= {CascadeType.ALL})
-    @JoinColumn(name="idTecnico")
-    private List<Tecnico> resuelve = new ArrayList<Tecnico>();
+    @JoinColumn(name = "idCliente")
+    private Cliente idCliente;
 
-    @OneToOne(cascade= {CascadeType.ALL})
-    @JoinColumn(name="incidente_c")
-    private Especialidad especialidad;
+    @OneToMany(cascade= {CascadeType.ALL})
+    @JoinColumn(name = "idEspecialidad")
+    private Especialidad idEspecialidad;
 
+    @ManyToMany(cascade = {CascadeType.ALL})
+    @JoinTable(name = "incidenteXtecnico", joinColumns = {@JoinColumn(name = "idIncidente")},
+            inverseJoinColumns = {@JoinColumn(name = "idTecnico")})
+    private Set<Tecnico> resuelve = new HashSet<Tecnico>();
 
 
     public Incidente() {
@@ -49,41 +58,6 @@ public class Incidente implements Serializable {
         this.resuelve.add(tec);
     }
 
-    public List<Tecnico> getResuelve() {
-        return resuelve;
-    }
-
-    public void setResuelve(List<Tecnico> resuelve) {
-        this.resuelve = resuelve;
-    }
-
-    public Especialidad getEspecialidad() {
-        return especialidad;
-    }
-
-    public void setEspecialidad(Especialidad especialidad) {
-        this.especialidad = especialidad;
-    }
-
-    public void agregarTecnico(Tecnico tec) {
-        this.resuelve.add(tec);
-    }
-
-    public int getIdIncidente() {
-        return idIncidente;
-    }
-
-    public void setIdIncidente(int idIncidente) {
-        this.idIncidente = idIncidente;
-    }
-
-    public String getDescripcion() {
-        return descripcion;
-    }
-
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
-    }
 
     public int getTiempoEstimado() {
         return tiempoEstimado;
@@ -101,6 +75,38 @@ public class Incidente implements Serializable {
         this.fechaResolucion = fechaResolucion;
     }
 
+    public Cliente getIdCliente() {
+        return idCliente;
+    }
+
+    public void setIdCliente(Cliente idCliente) {
+        this.idCliente = idCliente;
+    }
+
+    public Set<Tecnico> getResuelve() {
+        return resuelve;
+    }
+
+    public void setResuelve(Set<Tecnico> resuelve) {
+        this.resuelve = resuelve;
+    }
+
+    public Especialidad getIdEspecialidad() {
+        return idEspecialidad;
+    }
+
+    public void setIdEspecialidad(Especialidad idEspecialidad) {
+        this.idEspecialidad = idEspecialidad;
+    }
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
     public boolean isEstado() {
         return estado;
     }
@@ -108,5 +114,4 @@ public class Incidente implements Serializable {
     public void setEstado(boolean estado) {
         this.estado = estado;
     }
-
 }

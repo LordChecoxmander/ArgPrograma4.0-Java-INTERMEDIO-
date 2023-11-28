@@ -8,6 +8,7 @@ import javax.persistence.*;
 public class Especialidad implements Serializable {
 
     @Id
+    @Column(name="idEspecialidad")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idEspecialidad;
 
@@ -23,9 +24,9 @@ public class Especialidad implements Serializable {
 
     }
 
-    public Especialidad(int idEspecialidad, String nombre, String descripción) {
+    public Especialidad(String nombre, String descripción) {
         super();
-        this.idEspecialidad = idEspecialidad;
+//        this.idEspecialidad = idEspecialidad;
         this.nombre = nombre;
         this.descripción = descripción;
     }
