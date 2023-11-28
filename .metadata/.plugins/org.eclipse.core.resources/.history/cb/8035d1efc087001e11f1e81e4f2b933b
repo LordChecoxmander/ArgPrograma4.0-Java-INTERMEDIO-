@@ -1,9 +1,0 @@
-package Ejercicio1;
-
-import java.util.List;
-
-@FunctionalInterfaced
-public interface Mayuscula {
-	
-	List<String> change (List<String> lis_origin);
-}
