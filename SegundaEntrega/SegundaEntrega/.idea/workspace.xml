@@ -5,19 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="29c86e7a-9fba-4fbd-98df-ffe9e130516a" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../../App_Clase7B_Comision73/.classpath" beforeDir="false" afterPath="$PROJECT_DIR$/../../App_Clase7B_Comision73/.classpath" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../App_Clase7B_Comision73/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../App_Clase7B_Comision73/.project" beforeDir="false" afterPath="$PROJECT_DIR$/../../App_Clase7B_Comision73/.project" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../App_Clase7B_Comision73/.settings/org.eclipse.jdt.core.prefs" beforeDir="false" afterPath="$PROJECT_DIR$/../../App_Clase7B_Comision73/.settings/org.eclipse.jdt.core.prefs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../App_Clase7B_Comision73/src/main/java/frgp/utn/edu/ar/main/nuevoMain.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/3299c574-abb4-40be-97e7-c8f1190a5826.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/3299c574-abb4-40be-97e7-c8f1190a5826.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/3299c574-abb4-40be-97e7-c8f1190a5826/storage_v2/_src_/schema/CursoAPBD2.pTJVeQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/3299c574-abb4-40be-97e7-c8f1190a5826/storage_v2/_src_/schema/CursoAPBD2.pTJVeQ.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dao/DaoCliente.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/DaoCliente.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dao/DaoEspecialidad.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/DaoEspecialidad.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dao/DaoIncidente.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/DaoIncidente.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dao/DaoTecnico.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/DaoTecnico.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/entidad/Cliente.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entidad/Cliente.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/entidad/Especialidad.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entidad/Especialidad.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/entidad/Incidente.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entidad/Incidente.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/entidad/Tecnico.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entidad/Tecnico.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/principal/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/principal/App.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -102,7 +97,11 @@
       <updated>1701119636636</updated>
       <workItem from="1701119637563" duration="11026000" />
       <workItem from="1701180395784" duration="4945000" />
-      <workItem from="1701201774757" duration="954000" />
+      <workItem from="1701201774757" duration="2407000" />
+      <workItem from="1701204253388" duration="635000" />
+      <workItem from="1701207881151" duration="43000" />
+      <workItem from="1701208642385" duration="11000" />
+      <workItem from="1701210480123" duration="140000" />
     </task>
     <servers />
   </component>

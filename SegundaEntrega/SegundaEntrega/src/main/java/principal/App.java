@@ -5,7 +5,13 @@ import dao.DaoEspecialidad;
 import dao.DaoIncidente;
 import dao.DaoTecnico;
 import entidad.*;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.cfg.Configuration;
+import org.hibernate.service.ServiceRegistry;
+import org.hibernate.service.ServiceRegistryBuilder;
 
+import java.io.File;
 import java.time.LocalDate;
 import java.time.Month;
 
@@ -17,6 +23,16 @@ public class App
 {
     public static void main( String[] args )
     {
+        File hibernatePropsFile = new File("src/main/java/hibernate.cfg.xml");
+        SessionFactory sessionFactory;
+        Configuration configuration = new Configuration();
+        configuration.configure(hibernatePropsFile);
+        ServiceRegistry serviceRegistry = new ServiceRegistryBuilder().applySettings(configuration.getProperties()).buildServiceRegistry();
+        sessionFactory = configuration.buildSessionFactory(serviceRegistry);
+        Session session = sessionFactory.openSession();
+
+        session.beginTransaction();
+
         /*
          * Creo Cientes
         */
@@ -26,71 +42,9 @@ public class App
         Cliente cli4 = new Cliente( 44444444, "RazonCUATRO");
         Cliente cli5 = new Cliente( 55555555, "RazonCINCO");
 
-
         /*
-         * Creo Especialidades
+        * CRUD CLiente
         */
-        Especialidad esp1 = new Especialidad( "NombreUNO", "DescUNO");
-        Especialidad esp2 = new Especialidad( "NombreDOS", "DescDOS");
-        Especialidad esp3 = new Especialidad( "NombreTRES", "DescTRES");
-        Especialidad esp4 = new Especialidad( "NombreCUATRO", "DescCUATRO");
-        Especialidad esp5 = new Especialidad( "NombreCINCO", "DescCINCO");
-
-
-        /*
-         * Creo Incidentes
-        */
-        Incidente in1 = new Incidente(0, "desUNO", 11, LocalDate.of(2023, Month.NOVEMBER, 1), false);
-        Incidente in2 = new Incidente(1, "desDOS", 11, LocalDate.of(2023, Month.NOVEMBER, 2), false);
-        Incidente in3 = new Incidente(2, "desTRES", 11, LocalDate.of(2023, Month.NOVEMBER, 3), false);
-        Incidente in4 = new Incidente(3, "desCUATRO", 11, LocalDate.of(2023, Month.NOVEMBER, 4), false);
-        Incidente in5 = new Incidente(4, "desCINCO", 11, LocalDate.of(2023, Month.NOVEMBER, 5), false);
-
-
-        /*
-         * Creo Tecnicos
-        */
-        Tecnico tec1 = new Tecnico( "NombreUNO", "ApellidoUNO");
-        Tecnico tec2 = new Tecnico( "NombreDOS", "ApellidoDOS");
-        Tecnico tec3 = new Tecnico( "NombreTRES", "ApellidoTRES");
-        Tecnico tec4 = new Tecnico( "NombreCUATRO", "ApellidoCUATRO");
-        Tecnico tec5 = new Tecnico( "NombreCINCO", "ApellidoCINCO");
-
-        /*
-         * agrego a cada tecnico a una especialidad
-         */
-
-        tec1.setIdEspecialidad(esp1);
-        tec2.setIdEspecialidad(esp2);
-        tec3.setIdEspecialidad(esp3);
-        tec4.setIdEspecialidad(esp4);
-        tec5.setIdEspecialidad(esp5);
-
-        /*
-         * agrego a cada incidente una especialidad
-         */
-
-        in1.setIdEspecialidad(esp1);
-        in2.setIdEspecialidad(esp2);
-        in3.setIdEspecialidad(esp3);
-        in4.setIdEspecialidad(esp4);
-        in5.setIdEspecialidad(esp5);
-
-        /*
-         * agrego a cada incidente un tecnico
-         */
-
-        in1.agregarResuelve(tec1);
-        in2.agregarResuelve(tec2);
-        in3.agregarResuelve(tec3);
-        in4.agregarResuelve(tec4);
-        in5.agregarResuelve(tec5);
-
-
-        /*
-         * Creo los Dao y agrego los objetos a la BD
-         */
-
         DaoCliente daoCli = new DaoCliente();
         daoCli.Add(cli1);
         daoCli.Add(cli2);
@@ -98,26 +52,108 @@ public class App
         daoCli.Add(cli4);
         daoCli.Add(cli5);
 
-        DaoEspecialidad daoEs = new DaoEspecialidad();
-        daoEs.Add(esp1);
-        daoEs.Add(esp2);
-        daoEs.Add(esp3);
-        daoEs.Add(esp4);
-        daoEs.Add(esp5);
+        Cliente cl = daoCli.ReadOne(2);
+        cl.setCuit(1234456);
+        cl.setRazonSocial("una Noble Causa");
 
-        DaoIncidente daoIn = new DaoIncidente();
-        daoIn.Add(in1);
-        daoIn.Add(in2);
-        daoIn.Add(in3);
-        daoIn.Add(in4);
-        daoIn.Add(in5);
+        daoCli.Update(cl);
 
-        DaoTecnico daoTec = new DaoTecnico();
-        daoTec.Add(tec1);
-        daoTec.Add(tec2);
-        daoTec.Add(tec3);
-        daoTec.Add(tec4);
-        daoTec.Add(tec5);
+        daoCli.Delete(cl);
+
+
+
+//
+//        /*
+//         * Creo Especialidades
+//        */
+//        Especialidad esp1 = new Especialidad( "NombreUNO", "DescUNO");
+//        Especialidad esp2 = new Especialidad( "NombreDOS", "DescDOS");
+//        Especialidad esp3 = new Especialidad( "NombreTRES", "DescTRES");
+//        Especialidad esp4 = new Especialidad( "NombreCUATRO", "DescCUATRO");
+//        Especialidad esp5 = new Especialidad( "NombreCINCO", "DescCINCO");
+//
+//
+//        /*
+//         * Creo Incidentes
+//        */
+//        Incidente in1 = new Incidente(0, "desUNO", 11, LocalDate.of(2023, Month.NOVEMBER, 1), false);
+//        Incidente in2 = new Incidente(1, "desDOS", 11, LocalDate.of(2023, Month.NOVEMBER, 2), false);
+//        Incidente in3 = new Incidente(2, "desTRES", 11, LocalDate.of(2023, Month.NOVEMBER, 3), false);
+//        Incidente in4 = new Incidente(3, "desCUATRO", 11, LocalDate.of(2023, Month.NOVEMBER, 4), false);
+//        Incidente in5 = new Incidente(4, "desCINCO", 11, LocalDate.of(2023, Month.NOVEMBER, 5), false);
+//
+//
+//        /*
+//         * Creo Tecnicos
+//        */
+//        Tecnico tec1 = new Tecnico( "NombreUNO", "ApellidoUNO");
+//        Tecnico tec2 = new Tecnico( "NombreDOS", "ApellidoDOS");
+//        Tecnico tec3 = new Tecnico( "NombreTRES", "ApellidoTRES");
+//        Tecnico tec4 = new Tecnico( "NombreCUATRO", "ApellidoCUATRO");
+//        Tecnico tec5 = new Tecnico( "NombreCINCO", "ApellidoCINCO");
+//
+//        /*
+//         * agrego a cada tecnico a una especialidad
+//         */
+//
+//        tec1.setIdEspecialidad(esp1);
+//        tec2.setIdEspecialidad(esp2);
+//        tec3.setIdEspecialidad(esp3);
+//        tec4.setIdEspecialidad(esp4);
+//        tec5.setIdEspecialidad(esp5);
+//
+//        /*
+//         * agrego a cada incidente una especialidad
+//         */
+//
+//        in1.setIdEspecialidad(esp1);
+//        in2.setIdEspecialidad(esp2);
+//        in3.setIdEspecialidad(esp3);
+//        in4.setIdEspecialidad(esp4);
+//        in5.setIdEspecialidad(esp5);
+//
+//        /*
+//         * agrego a cada incidente un tecnico
+//         */
+//
+//        in1.agregarResuelve(tec1);
+//        in2.agregarResuelve(tec2);
+//        in3.agregarResuelve(tec3);
+//        in4.agregarResuelve(tec4);
+//        in5.agregarResuelve(tec5);
+
+
+        /*
+         * Creo los Dao y agrego los objetos a la BD
+         */
+
+//        DaoCliente daoCli = new DaoCliente();
+//        daoCli.Add(cli1);
+//        daoCli.Add(cli2);
+//        daoCli.Add(cli3);
+//        daoCli.Add(cli4);
+//        daoCli.Add(cli5);
+
+//        DaoEspecialidad daoEs = new DaoEspecialidad();
+//        daoEs.Add(esp1);
+//        daoEs.Add(esp2);
+//        daoEs.Add(esp3);
+//        daoEs.Add(esp4);
+//        daoEs.Add(esp5);
+//
+//        DaoIncidente daoIn = new DaoIncidente();
+//        daoIn.Add(in1);
+//        daoIn.Add(in2);
+//        daoIn.Add(in3);
+//        daoIn.Add(in4);
+//        daoIn.Add(in5);
+//
+//        DaoTecnico daoTec = new DaoTecnico();
+//        daoTec.Add(tec1);
+//        daoTec.Add(tec2);
+//        daoTec.Add(tec3);
+//        daoTec.Add(tec4);
+//        daoTec.Add(tec5);
 
 
 

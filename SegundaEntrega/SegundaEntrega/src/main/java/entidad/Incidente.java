@@ -3,9 +3,7 @@ package entidad;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 import javax.persistence.*;
 import entidad.Cliente;
 
@@ -38,7 +36,7 @@ public class Incidente implements Serializable {
     @ManyToMany(cascade = {CascadeType.ALL})
     @JoinTable(name = "incidenteXtecnico", joinColumns = {@JoinColumn(name = "idIncidente")},
             inverseJoinColumns = {@JoinColumn(name = "idTecnico")})
-    private Set<Tecnico> resuelve = new HashSet<Tecnico>();
+    private List<Tecnico> resuelve = new ArrayList<Tecnico>();
 
 
     public Incidente() {
@@ -83,11 +81,11 @@ public class Incidente implements Serializable {
         this.idCliente = idCliente;
     }
 
-    public Set<Tecnico> getResuelve() {
+    public List<Tecnico> getResuelve() {
         return resuelve;
     }
 
-    public void setResuelve(Set<Tecnico> resuelve) {
+    public void setResuelve(List<Tecnico> resuelve) {
         this.resuelve = resuelve;
     }
 
